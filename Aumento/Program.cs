@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Aumento
@@ -18,13 +19,35 @@ namespace Aumento
 				Task conta = new Task(() =>
 				{
 					// Monitor
+					//Monitor.Enter(padlock);
+					//try
+					//{
+					// n++;
+					// Thread.Sleep(1);
+					// Console.WriteLine($"n={n}");
+					//}
+					//finally
+					//{
+					//Monitor.Exit(padlock);
+					//}
+
+					//lock
+					lock (padlock)
+					{
+						n++;
+						Thread.Sleep(1);
+						Console.WriteLine($"n={n}");
+					}
+
 
 
 
 
 
 				});
+				conta.Start();
 			}
+			Console.ReadLine();
 		}
 	}
 }
